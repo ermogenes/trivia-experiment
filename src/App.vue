@@ -48,7 +48,7 @@ export default {
   },
   mounted() {
     const initialScoreboard = localStorage.triviaxp_leaderboard;
-    if (!initialScoreboard) localStorage.triviaxp_leaderboard = [];
+    if (!initialScoreboard) localStorage.triviaxp_leaderboard = '[]';
     this.leaderboard = JSON.parse(localStorage.triviaxp_leaderboard);
   },
   methods: {
