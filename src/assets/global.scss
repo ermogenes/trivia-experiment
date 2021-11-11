@@ -9,6 +9,7 @@
   --bgc-alt-1: #fb3569;
   --bgc-alt-2: #ff9d76;
   --bgc-alt-3: #51eaea;
+  --gauge: #ff9d76;
   --fgc-main: #141823;
 }
 
@@ -46,15 +47,34 @@ a {
   display: inline-block;
   text-align: center;
   width: 5rem;
+  cursor: pointer;
 
   font-family: var(--font-main);
   color: var(--fgc-alt-1);
   background-color: var(--bgc-alt-1);
 
+  &.true {
+    font-family: var(--font-main);
+    color: var(--fgc-alt-1);
+    background-color: var(--bgc-alt-3);
+  }
+
+  &.false {
+    font-family: var(--font-main);
+    color: var(--fgc-alt-1);
+    background-color: var(--bgc-alt-1);
+  }
+
   &.secondary {
     font-family: var(--font-main);
     color: var(--fgc-alt-1);
     background-color: var(--bgc-alt-2);
+  }
+
+  &.small {
+    width: 3rem;
+    margin: 0.5rem;
+    padding: 0.75rem;
   }
 }
 
@@ -65,6 +85,12 @@ main {
 h1 {
   font-family: var(--font-action);
   font-size: 4rem;
+  margin-top: 1rem;
+}
+
+h2 {
+  font-family: var(--font-action);
+  font-size: 3rem;
   margin-top: 1rem;
 }
 

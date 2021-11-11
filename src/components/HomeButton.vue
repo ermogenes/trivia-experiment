@@ -5,6 +5,7 @@
 <script>
 export default {
   props: ['text'],
+  emits: ['homeClick'],
 };
 </script>
 

@@ -4,14 +4,23 @@
     @leaderboardClick="state = 'leaderboard'"
     @identificationClick="state = 'identification'"
   />
-  <Leaderboard v-if="state == 'leaderboard'" @homeClick="state = 'home'" />
+  <Leaderboard
+    v-if="state == 'leaderboard'"
+    @homeClick="state = 'home'"
+    :board="leaderboard.slice(0, 5)"
+  />
   <Identification
     v-if="state == 'identification'"
     @homeClick="state = 'home'"
     v-model="player"
     @gameClick="state = 'game'"
   />
-  <Game v-if="state == 'game'" @homeClick="state = 'home'" :player="player" />
+  <Game
+    v-if="state == 'game'"
+    @homeClick="state = 'home'"
+    @gameFinished="setLeaderboard"
+    :player="player"
+  />
 </template>
 
 <script>
@@ -34,7 +43,24 @@ export default {
     return {
       state: 'home',
       player: 'p1',
+      leaderboard: [],
     };
+  },
+  mounted() {
+    const initialScoreboard = localStorage.triviaxp_leaderboard;
+    if (!initialScoreboard) localStorage.triviaxp_leaderboard = [];
+    this.leaderboard = JSON.parse(localStorage.triviaxp_leaderboard);
+  },
+  methods: {
+    setLeaderboard(score) {
+      this.leaderboard.push(score);
+      this.leaderboard.sort((a, b) => {
+        if (a.points > b.points) return -1;
+        if (a.points < b.points) return 1;
+        return 0;
+      });
+      localStorage.triviaxp_leaderboard = JSON.stringify(this.leaderboard);
+    },
   },
 };
 </script>
