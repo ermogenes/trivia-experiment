@@ -25,7 +25,7 @@
         :translation="questionTranslated"
         :difficulty="difficulty"
         :category="category"
-        :canUseHelp="helps > 0"
+        :canUseHelp="helps > 0 && false /* TODO */"
         :canUseJump="jumps > 0"
         :canUseTranslation="translations > 0 && !translationUsedThisRound"
         @answer="handleAnswer"
