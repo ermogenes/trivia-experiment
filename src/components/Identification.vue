@@ -1,13 +1,7 @@
 <template>
   <h1>Pode me chamar de...</h1>
   <main>
-    <input
-      ref="playerName"
-      type="text"
-      name="player"
-      :value="modelValue"
-      @input="changePlayer($event.target.value)"
-    />
+    <input ref="playerName" type="text" name="player" :value="modelValue" @input="changePlayer" />
   </main>
   <div>
     <HomeButton @homeClick="$emit('homeClick')" />
@@ -19,7 +13,7 @@
 import HomeButton from './HomeButton.vue';
 
 export default {
-  props: ['player', 'modelValue'],
+  props: ['modelValue'],
   emits: ['update:modelValue', 'homeClick', 'gameClick'],
   components: {
     HomeButton,
@@ -31,13 +25,13 @@ export default {
     } else {
       this.$refs.playerName.value = previousPlayer;
     }
-
+    this.$emit('update:modelValue', this.$refs.playerName.value);
     this.$refs.playerName.select();
   },
   methods: {
-    changePlayer(player) {
-      localStorage.triviaxp_player = player;
-      this.$emit('update:modelValue', player);
+    changePlayer(e) {
+      localStorage.triviaxp_player = e.target.value;
+      this.$emit('update:modelValue', e.target.value);
     },
   },
 };

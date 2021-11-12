@@ -39,6 +39,7 @@ main {
     & > * {
       flex: 1;
       text-align: center;
+      margin: 0 1rem;
     }
 
     .player {
