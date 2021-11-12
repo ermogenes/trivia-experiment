@@ -25,7 +25,9 @@
         :translation="questionTranslated"
         :difficulty="difficulty"
         :category="category"
-        :canUseHelp="helps > 0 && false /* TODO */"
+        :helpIcon="helpIcon"
+        :helpGiven="helpGiven"
+        :canUseHelp="helps > 0"
         :canUseJump="jumps > 0"
         :canUseTranslation="translations > 0 && !translationUsedThisRound"
         @answer="handleAnswer"
@@ -65,6 +67,7 @@ const gameDefs = {
   pointsByHelps: 1,
   pointsByJumps: 1,
   pointsByTranslations: 1,
+  helpCorrectness: 5 / 6,
 };
 
 export default {
@@ -82,6 +85,8 @@ export default {
       points: 0,
       finalPoints: 0,
 
+      helpIcon: '',
+      helpGiven: false,
       helps: gameDefs.initialHelps,
       toGetHelp: gameDefs.rightAnswersToGetHelp,
       helpsAccumulated: 0,
@@ -120,7 +125,13 @@ export default {
     this.nextQuestion();
   },
   methods: {
+    restartHelpButton() {
+      this.helpIcon = '🙌🏼';
+      this.helpGiven = false;
+    },
     async nextQuestion() {
+      this.restartHelpButton();
+
       this.question = 'loading...';
       this.questionTranslated = '';
 
@@ -143,6 +154,7 @@ export default {
       this.translationUsedThisRound = false;
     },
     async translate() {
+      this.questionTranslated = 'traduzindo...';
       this.translationUsedThisRound = true;
       const response = await fetch('https://translate.argosopentech.com/translate', {
         method: 'POST',
@@ -178,8 +190,15 @@ export default {
         this.calculateFinalPoints();
       }
     },
+    generateHelp() {
+      if (Math.random() <= gameDefs.helpCorrectness) {
+        return this.correctAnswer === 'true' ? '👍🏼' : '👎🏼';
+      }
+      return this.correctAnswer === 'true' ? '👎🏼' : '👍🏼';
+    },
     handleHelp() {
-      console.log('help');
+      this.helpIcon = this.generateHelp();
+      this.helpGiven = true;
 
       this.helps -= 1;
       this.totalHelpsUsed += 1;

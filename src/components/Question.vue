@@ -9,7 +9,13 @@
   </section>
   <section class="translation" lang="pt-BR" v-if="translation">{{ translation }}</section>
   <footer>
-    <a class="secondary small" v-if="canUseHelp" @click.prevent="$emit('help')">🙌🏼</a>
+    <a
+      class="secondary small"
+      v-if="canUseHelp || helpGiven"
+      @click.prevent="if (canUseHelp && !helpGiven) $emit('help');"
+      :style="{ cursor: !helpGiven ? 'pointer' : 'help' }"
+      v-html="helpIcon"
+    ></a>
     <a class="secondary small" v-if="canUseJump" @click.prevent="$emit('jump')">🦘</a>
     <a class="secondary small" v-if="canUseTranslation" @click.prevent="$emit('translate')">👩🏼‍🏫</a>
     <a class="true" @click.prevent="$emit('answer', true)">👍🏼</a>
@@ -19,7 +25,16 @@
 
 <script>
 export default {
-  props: ['translation', 'difficulty', 'category', 'canUseHelp', 'canUseJump', 'canUseTranslation'],
+  props: [
+    'helpIcon',
+    'helpGiven',
+    'translation',
+    'difficulty',
+    'category',
+    'canUseHelp',
+    'canUseJump',
+    'canUseTranslation',
+  ],
   emits: ['answer', 'help', 'jump', 'translate'],
 };
 </script>
