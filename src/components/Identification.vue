@@ -6,7 +6,7 @@
       type="text"
       name="player"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="changePlayer($event.target.value)"
     />
   </main>
   <div>
@@ -19,13 +19,26 @@
 import HomeButton from './HomeButton.vue';
 
 export default {
-  props: ['modelValue'],
+  props: ['player', 'modelValue'],
   emits: ['update:modelValue', 'homeClick', 'gameClick'],
   components: {
     HomeButton,
   },
   mounted() {
+    const previousPlayer = localStorage.triviaxp_player;
+    if (!previousPlayer) {
+      localStorage.triviaxp_player = this.$refs.playerName.value;
+    } else {
+      this.$refs.playerName.value = previousPlayer;
+    }
+
     this.$refs.playerName.select();
+  },
+  methods: {
+    changePlayer(player) {
+      localStorage.triviaxp_player = player;
+      this.$emit('update:modelValue', player);
+    },
   },
 };
 </script>
