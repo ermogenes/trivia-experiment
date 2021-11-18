@@ -1,5 +1,5 @@
 <template>
-  <a class="secondary" @click.prevent="$emit('homeClick')">{{ text || '◀' }}</a>
+  <a class="secondary" @click.prevent="$emit('homeClick')">{{ text || '🏠' }}</a>
 </template>
 
 <script>
