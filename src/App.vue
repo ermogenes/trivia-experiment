@@ -13,8 +13,9 @@
     v-if="state == 'identification'"
     @homeClick="state = 'home'"
     v-model="player"
-    @gameClick="state = 'game'"
+    @gameClick="state = 'tutorial'"
   />
+  <Tutorial v-if="state == 'tutorial'" @homeClick="state = 'home'" @startGame="state = 'game'" />
   <Game
     v-if="state == 'game'"
     @homeClick="state = 'home'"
@@ -29,6 +30,7 @@ import '@/assets/global.scss';
 import Start from './components/Start.vue';
 import Leaderboard from './components/Leaderboard.vue';
 import Identification from './components/Identification.vue';
+import Tutorial from './components/Tutorial.vue';
 import Game from './components/Game.vue';
 
 export default {
@@ -37,6 +39,7 @@ export default {
     Start,
     Leaderboard,
     Identification,
+    Tutorial,
     Game,
   },
   data() {
