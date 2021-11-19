@@ -29,4 +29,13 @@ module.exports = {
         return newOptions;
       });
   },
+  pwa: {
+    name: 'Trivia Experiment',
+    themeColor: '#fb3569',
+    msTileColor: '#fb3569',
+    iconPaths: {
+      maskIcon: null,
+      msTileImage: null,
+    },
+  },
 };
