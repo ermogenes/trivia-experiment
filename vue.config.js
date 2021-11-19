@@ -31,6 +31,8 @@ module.exports = {
   },
   pwa: {
     name: 'Trivia Experiment',
+    shortName: 'Trivia XP',
+    backgroundColor: '#fffde1',
     themeColor: '#fb3569',
     msTileColor: '#fb3569',
     iconPaths: {
