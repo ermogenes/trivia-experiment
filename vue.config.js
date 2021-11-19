@@ -40,6 +40,7 @@ module.exports = {
     },
     manifestOptions: {
       background_color: '#fffde1',
+      orientation: 'landscape-primary',
       description: 'A Vue.js game powered by Open Trivia DB and LibreTranslate',
       categories: ['games', 'trivia', 'pwa', 'vue.js'],
       screenshots: [
