@@ -40,7 +40,7 @@ module.exports = {
     manifestOptions: {
       description: 'A Vue.js game powered by Open Trivia DB and LibreTranslate',
       categories: ['games', 'trivia', 'pwa', 'vue.js'],
-      screeshots: [
+      screenshots: [
         {
           src: 'img/screenshots/home.PNG',
           sizes: '890x479',
