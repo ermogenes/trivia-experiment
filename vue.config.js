@@ -32,7 +32,6 @@ module.exports = {
   pwa: {
     name: 'Trivia Experiment',
     shortName: 'Trivia XP',
-    backgroundColor: '#fffde1',
     themeColor: '#fb3569',
     msTileColor: '#fb3569',
     iconPaths: {
@@ -40,6 +39,7 @@ module.exports = {
       msTileImage: null,
     },
     manifestOptions: {
+      background_color: '#fffde1',
       description: 'A Vue.js game powered by Open Trivia DB and LibreTranslate',
       categories: ['games', 'trivia', 'pwa', 'vue.js'],
       screenshots: [
