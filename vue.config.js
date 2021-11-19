@@ -37,5 +37,26 @@ module.exports = {
       maskIcon: null,
       msTileImage: null,
     },
+    manifestOptions: {
+      description: 'A Vue.js game powered by Open Trivia DB and LibreTranslate',
+      categories: ['games', 'trivia', 'pwa', 'vue.js'],
+      screeshots: [
+        {
+          src: 'img/screenshots/home.PNG',
+          sizes: '890x479',
+          type: 'image/png',
+        },
+        {
+          src: 'img/screenshots/tutorial.PNG',
+          sizes: '860x457',
+          type: 'image/png',
+        },
+        {
+          src: 'img/screenshots/game.PNG',
+          sizes: '846x553',
+          type: 'image/png',
+        },
+      ],
+    },
   },
 };
