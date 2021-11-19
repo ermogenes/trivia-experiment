@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/trivia-experiment/js/chunk-vendors.1e5c8c70.js"
   },
   {
-    "revision": "d7fac18cced75a4bc556cec4e584b8f0",
+    "revision": "c46b20a7eaaac0aff6c9e517b1c59f05",
     "url": "/trivia-experiment/manifest.json"
   },
   {
