@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/trivia-experiment/precache-manifest.07485130e52b6b9cfbc2c5657508bc65.js"
+  "/trivia-experiment/precache-manifest.2ddfadd81273d6c44cb5ceafc0457ea1.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "trivia-experiment"});
